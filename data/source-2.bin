@@ -1,8 +1,8 @@
 {
   "kind": "product_card",
-  "id": "product_card-B",
+  "id": "product_card-A",
   "revision": "v1",
-  "period": "2026-11-13",
-  "subject": "sample-A",
-  "state": "pending"
+  "store_id": "store-N",
+  "sku": "pork-500g",
+  "price_cny": 14.8
 }

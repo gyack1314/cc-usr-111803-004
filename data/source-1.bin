@@ -2,7 +2,7 @@
   "kind": "store_page",
   "id": "store_page-A",
   "revision": "v1",
-  "period": "2026-11-13",
-  "subject": "sample-A",
-  "state": "published"
+  "store_id": "store-N",
+  "sku": "pork-500g",
+  "page_scope": "store-N"
 }

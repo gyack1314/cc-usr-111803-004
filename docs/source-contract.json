@@ -1,0 +1,24 @@
+{
+  "roles": [
+    "store_page",
+    "product_card"
+  ],
+  "relation_field": "store_id",
+  "required_fields": {
+    "store_page": [
+      "store_id",
+      "sku",
+      "page_scope"
+    ],
+    "product_card": [
+      "store_id",
+      "sku",
+      "price_cny"
+    ]
+  },
+  "source_identity": [
+    "kind",
+    "id",
+    "revision"
+  ]
+}
