@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>场次演练页</title>
+<body><h1>场次资料</h1><button type="button" id="switch">切换</button>
+<div id="card">意向批次 A</div><pre id="state"></pre>
+<script>
+let state={scope:"采购场次 A",card_scope:"采购场次 A",phase:'loaded'};
+const show=()=>document.querySelector('#state').textContent=JSON.stringify(state);
+show();
+document.querySelector('#switch').onclick=()=>{
+  state.scope="采购场次 B"; state.phase='pending'; show();
+  setTimeout(()=>{state.card_scope=state.scope; state.phase='loaded';
+    document.querySelector('#card').textContent="成交回执 B"; show();},300);
+};
+</script></body></html>

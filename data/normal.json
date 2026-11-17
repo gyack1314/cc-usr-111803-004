@@ -1,0 +1,33 @@
+{
+  "allowed_origins": [
+    "https://local-source-004.example.test"
+  ],
+  "steps": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-004.example.test/records/store_page-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-1.bin",
+        "status": 200,
+        "bytes": 145,
+        "sha256": "48806e7bfe7e8dbbc717e7ad093ece5d4a85d7f2bef9239e1f0fcb779513fe32"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-004.example.test/records/product_card-B",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-2.bin",
+        "status": 200,
+        "bytes": 147,
+        "sha256": "facfb7d155d7a7ce1b897f9fa06f3570028941f43410650e744d5359ea5c244a"
+      }
+    }
+  ]
+}
