@@ -1,13 +1,29 @@
-<!doctype html><html lang="zh"><meta charset="utf-8"><title>场次演练页</title>
-<body><h1>门店资料</h1><button type="button" id="switch">切换</button>
-<div id="card">猪肉 14.8 元</div><pre id="state"></pre>
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>门店资料演练页</title>
+<body><h1>门店资料</h1><button type="button" id="switch">切换门店</button>
+<button type="button" id="next" disabled>下一页</button><div id="cards"></div><pre id="state"></pre>
 <script>
-let state={scope:"北方门店",card_scope:"北方门店",phase:'loaded',card:{kind:'product_card',id:'product_card-A',revision:'v1',store_id:'北方门店',sku:'pork-500g',price_cny:14.8}};
-const show=()=>document.querySelector('#state').textContent=JSON.stringify(state);
+const north={page:1,page_count:1,page_token:null,cards:[
+  {kind:'product_card',id:'offer-n-1',revision:'v1',store_id:'北方门店',sku:'pork-500g',price_cny:14.8,valid_from:'2026-11-16',valid_to:'2026-11-22'}
+]};
+const southPages=[
+  {page:1,page_count:2,page_token:'south:2',cards:[
+    {kind:'product_card',id:'offer-s-1',revision:'v1',store_id:'南方门店',sku:'pork-500g',price_cny:15.1,valid_from:'2026-11-16',valid_to:'2026-11-22'},
+    {kind:'product_card',id:'offer-s-2',revision:'v1',store_id:'南方门店',sku:'pork-belly-500g',price_cny:23.6,valid_from:'2026-11-16',valid_to:'2026-11-22'}
+  ]},
+  {page:2,page_count:2,page_token:null,cards:[
+    {kind:'product_card',id:'offer-s-1',revision:'v2',store_id:'南方门店',sku:'pork-500g',price_cny:14.9,valid_from:'2026-11-18',valid_to:'2026-11-22'},
+    {kind:'product_card',id:'offer-s-3',revision:'v1',store_id:'南方门店',sku:'pork-ribs-500g',price_cny:31.2,valid_from:'2026-11-18',valid_to:'2026-11-20'}
+  ]}
+];
+let state={scope:'北方门店',card_scope:'北方门店',phase:'loaded',...north,card:north.cards[0]};
+const show=()=>{document.querySelector('#state').textContent=JSON.stringify(state);document.querySelector('#cards').textContent=state.cards.map(x=>`${x.sku} ${x.price_cny} 元`).join('；');document.querySelector('#next').disabled=state.scope!=='南方门店'||state.page>=state.page_count||state.phase!=='loaded'};
 show();
 document.querySelector('#switch').onclick=()=>{
-  state.scope="南方门店"; state.phase='pending'; show();
-  setTimeout(()=>{state.card_scope=state.scope; state.phase='loaded';state.card={kind:'product_card',id:'product_card-B',revision:'v2',store_id:'南方门店',sku:'pork-500g',price_cny:15.1};
-    document.querySelector('#card').textContent="猪肉 15.1 元"; show();},300);
+  state.scope='南方门店'; state.phase='pending'; state.page=1; state.page_count=2; state.page_token='north:1'; show();
+  setTimeout(()=>{Object.assign(state,southPages[0]);state.card_scope=state.scope;state.phase='loaded';state.card=state.cards[0];show()},300);
+};
+document.querySelector('#next').onclick=()=>{
+  state.phase='pending';show();
+  setTimeout(()=>{Object.assign(state,southPages[1]);state.card_scope=state.scope;state.phase='loaded';state.card=state.cards[0];show()},150);
 };
 </script></body></html>

@@ -1,4 +1,4 @@
-"""门户初始范围已采，切换后的待采范围与页面修订可追踪。"""
+"""门户初始范围已采，切换后能观察到新门店的稳定第一页。"""
 import json
 import unittest
 from pathlib import Path
@@ -14,5 +14,6 @@ class PortalRevision(unittest.TestCase):
         self.assertEqual(states[1]['scope'],sources[1]['scope'])
         self.assertEqual(states[1]['card_scope'],sources[0]['scope'])
         self.assertEqual(states[-1]['card_scope'],sources[1]['scope'])
-        self.assertEqual(states[-1]['card']['revision'],'v2')
+        self.assertEqual(states[-1]['card']['revision'],'v1')
+        self.assertEqual(states[-1]['card']['id'],'offer-s-1')
         self.assertEqual(states[-1]['card']['kind'],sources[1]['kind'])
