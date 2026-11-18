@@ -7,7 +7,7 @@ const show=()=>document.querySelector('#state').textContent=JSON.stringify(state
 show();
 document.querySelector('#switch').onclick=()=>{
   state.scope="南方门店"; state.phase='pending'; show();
-  setTimeout(()=>{state.card_scope=state.scope; state.phase='loaded';state.card={kind:'product_card',id:'product_card-B',revision:'v1',store_id:'南方门店',sku:'pork-500g',price_cny:15.1};
+  setTimeout(()=>{state.card_scope=state.scope; state.phase='loaded';state.card={kind:'product_card',id:'product_card-B',revision:'v2',store_id:'南方门店',sku:'pork-500g',price_cny:15.1};
     document.querySelector('#card').textContent="猪肉 15.1 元"; show();},300);
 };
 </script></body></html>
