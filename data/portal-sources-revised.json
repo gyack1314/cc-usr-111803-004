@@ -1,9 +1,0 @@
-{
-  "sources": [
-    {
-      "scope": "南方门店",
-      "kind": "product_card",
-      "required": true
-    }
-  ]
-}
