@@ -2,7 +2,7 @@
   "kind": "store_page",
   "id": "store_page-A",
   "revision": "v1",
-  "store_id": "store-N",
+  "store_id": "北方门店",
   "sku": "pork-500g",
-  "page_scope": "store-N"
+  "page_scope": "北方门店"
 }
